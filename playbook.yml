@@ -3,13 +3,6 @@
   hosts: windows
 
   tasks:
-    - name: Windows-Version anzeigen
-      win_shell: systeminfo | findstr /B /C:"OS Name"
-      register: os_info
-
-    - name: Ausgabe der Windows-Version
-      debug:
-        var: os_info.stdout_lines
 
     - name: Test-Ordner auf C:\ erstellen
       win_file:
