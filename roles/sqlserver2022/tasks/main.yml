@@ -40,7 +40,7 @@
 
 - name: install sql server
   win_command: >
-    "{{ sql_mount_drive }}setup.exe"
+    "{{ sql_mount_drive }}\setup.exe"
     /ConfigurationFile={{ sql_config_file }}
   args:
     creates: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER'
