@@ -4,12 +4,6 @@
     path: C:\Temp
     state: directory
 
-- name: download sql server 2022 iso
-  win_get_url:
-    url: "{{ sql_download_url }}"
-    dest: "{{ sql_iso_path }}"
-    force: no
-
 - name: mount iso
   win_shell: |
     $mount = Mount-DiskImage -ImagePath "{{ sql_iso_path }}" -PassThru
