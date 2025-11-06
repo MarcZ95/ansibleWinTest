@@ -1,8 +1,8 @@
 ---
 - name: add local
   win_user:
-    name: {{ username }}
-    password: {{ password }}
+    name: "{{ username }}"
+    password: "{{ password }}"
     state: present
     groups:
       - Users
@@ -14,5 +14,5 @@
   win_group_membership:
     name: Administrators
     members: 
-      -  {{ username }}
+      -  "{{ username }}"
     state: present
