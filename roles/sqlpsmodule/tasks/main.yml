@@ -1,0 +1,19 @@
+---
+- name: install NuGet Provider
+  win_shell: |
+    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+  args:
+    executable: powershell.exe
+
+- name: PowerShellGet Modul
+  win_shell: |
+    Install-Module -Name PowerShellGet -Force -Scope CurrentUser
+  args:
+    executable: powershell.exe
+
+- name: install SQL Server module
+  win_shell: |
+    Install-Module -Name SqlServer -Force -Scope CurrentUser
+  args:
+    executable: powershell.exe
+

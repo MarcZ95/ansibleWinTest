@@ -7,3 +7,4 @@
   roles: 
     - users
     - iis
+    - sqlpsmodule
