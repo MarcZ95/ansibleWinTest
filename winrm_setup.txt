@@ -16,7 +16,7 @@ Enable-PSRemoting -Force
 Write-Host "3️⃣ Basic Auth aktivieren..."
 Set-Item -Path WSMan:\localhost\Service\Auth\Basic -Value $true
 
-# 4️⃣ Unverschlüsselte Verbindungen erlauben (nur Test/Lab!)
+# 4️⃣ Unverschlüsselte Verbindungen erlauben
 Write-Host "4️⃣ Unverschlüsselte Verbindungen erlauben..."
 Set-Item -Path WSMan:\localhost\Service\AllowUnencrypted -Value $true
 
