@@ -1,7 +1,6 @@
 ---
 - name: Test Playbook für Windows Server 2022
   hosts: windows
-  gather_facts: no
 
   tasks:
     - name: Windows-Version anzeigen
@@ -11,10 +10,6 @@
     - name: Ausgabe der Windows-Version
       debug:
         var: os_info.stdout_lines
-
-    - name: Anzahl installierter Features ausgeben
-      debug:
-        msg: "Installierte Features: {{ features_info | length }}"
 
     - name: Test-Ordner auf C:\ erstellen
       win_file:
