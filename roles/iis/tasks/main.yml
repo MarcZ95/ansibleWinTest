@@ -1,0 +1,13 @@
+---
+- name: install IIS
+  win_feature:
+    name: Web-Server
+    state: present
+    include_sub_features: yes
+    include_management_tools: yes
+  
+- name: start iis and set start mode
+  win_service:
+    name: W3SVC
+    start_mode: auto
+    state: started
