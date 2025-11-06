@@ -1,5 +1,5 @@
 ---
-- name: add local user
+- name: create local user
   win_user:
     name: "{{ username }}"
     password: "{{ password }}"
