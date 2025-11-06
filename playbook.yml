@@ -1,0 +1,28 @@
+---
+- name: Test Playbook für Windows Server 2022
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - name: Windows-Version anzeigen
+      win_shell: systeminfo | findstr /B /C:"OS Name"
+      register: os_info
+
+    - name: Ausgabe der Windows-Version
+      debug:
+        var: os_info.stdout_lines
+
+    - name: Installierte Windows-Features auflisten
+      win_feature:
+        name: *
+        state: present
+      register: features_info
+
+    - name: Anzahl installierter Features ausgeben
+      debug:
+        msg: "Installierte Features: {{ features_info | length }}"
+
+    - name: Test-Ordner auf C:\ erstellen
+      win_file:
+        path: C:\TestAnsible
+        state: directory
