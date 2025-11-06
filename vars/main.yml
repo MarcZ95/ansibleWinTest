@@ -1,2 +1,4 @@
 username: "marc"
 password: "Admin40499!"
+ssms_installer_url: "https://aka.ms/ssmsfullsetup"
+ssms_installer_path: "C:\\Install\\SSMS-Setup-ENU.exe"
