@@ -56,7 +56,7 @@
     Dismount-DiskImage -ImagePath "{{ sql_iso_path }}"
   args:
     executable: powershell.exe
-  ignore_errors: true
+  ignore_errors: yes
 
 - name: delete iso
   win_file:
