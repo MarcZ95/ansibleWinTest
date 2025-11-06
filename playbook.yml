@@ -9,4 +9,5 @@
     - iis
     - failoverclustering
     - sqlpsmodule
+    - sqlserver2022
     - ssms
