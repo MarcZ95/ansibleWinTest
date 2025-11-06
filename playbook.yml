@@ -1,7 +1,6 @@
 ---
 - name: Tests für Windows Server 2022
   hosts: windows
-  become: true
   vars_files:
     - vars/main.yml
 
