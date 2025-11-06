@@ -1,10 +1,8 @@
 ---
-- name: Test Playbook für Windows Server 2022
+- name: Tests für Windows Server 2022
   hosts: windows
+  become: true
+  vars_files:
+    - vars/main.yml
 
-  tasks:
-
-    - name: Test-Ordner auf C:\ erstellen
-      win_file:
-        path: C:\TestAnsible
-        state: directory
+  roles:
