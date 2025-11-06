@@ -1,0 +1,35 @@
+# ---------------------------------------------
+# WinRM Setup für Ansible (Windows Server 2022)
+# ---------------------------------------------
+
+Write-Host "=== WinRM Setup für Ansible beginnt ==="
+
+# 1️⃣ WinRM Listener einrichten
+Write-Host "1️⃣ WinRM Listener aktivieren..."
+winrm quickconfig -q
+
+# 2️⃣ PSRemoting aktivieren
+Write-Host "2️⃣ PowerShell Remoting aktivieren..."
+Enable-PSRemoting -Force
+
+# 3️⃣ Basic Auth erlauben
+Write-Host "3️⃣ Basic Auth aktivieren..."
+Set-Item -Path WSMan:\localhost\Service\Auth\Basic -Value $true
+
+# 4️⃣ Unverschlüsselte Verbindungen erlauben (nur Test/Lab!)
+Write-Host "4️⃣ Unverschlüsselte Verbindungen erlauben..."
+Set-Item -Path WSMan:\localhost\Service\AllowUnencrypted -Value $true
+
+# 5️⃣ Firewall-Regeln prüfen / aktivieren
+Write-Host "5️⃣ Firewall-Regeln für WinRM prüfen und aktivieren..."
+Enable-NetFirewallRule -DisplayGroup "Windows Remote Management"
+
+# 6️⃣ WinRM Service neu starten
+Write-Host "6️⃣ WinRM-Service neu starten..."
+Restart-Service WinRM
+
+# 7️⃣ Listener prüfen
+Write-Host "7️⃣ WinRM Listener prüfen..."
+winrm enumerate winrm/config/listener
+
+Write-Host "✅ WinRM Setup abgeschlossen. Dein Windows Server ist jetzt bereit für Ansible."
