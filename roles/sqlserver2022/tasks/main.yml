@@ -35,6 +35,8 @@
       [OPTIONS]
       QUIET="True"
       IACCEPTSQLSERVERLICENSETERMS="True"
+      UpdateEnabled=False
+      USEMICROSOFTUPDATE=False
       ACTION="Install"
       FEATURES=SQLENGINE
       INSTANCENAME="MSSQLSERVER"
