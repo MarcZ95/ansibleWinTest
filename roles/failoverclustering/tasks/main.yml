@@ -1,5 +1,5 @@
 ---
-- name: Failover-Clustering Feature installieren
+- name: install failover clustering
   win_feature:
     name:
       - Failover-Clustering
