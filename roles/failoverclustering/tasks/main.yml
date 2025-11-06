@@ -1,0 +1,10 @@
+---
+- name: Failover-Clustering Feature installieren
+  win_feature:
+    name:
+      - Failover-Clustering
+      - RSAT-Clustering-Mgmt
+      - RSAT-Clustering-PowerShell
+    state: present
+    include_management_tools: yes
+  register: clustering
