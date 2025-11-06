@@ -29,28 +29,9 @@
     - E:\SQLData\Backup
 
 - name: create sql server conf ini
-  win_copy:
+  ansible.builtin.template:
+    src: ConfigurationFile.ini.j2
     dest: "{{ sql_config_file }}"
-    content: |
-      [OPTIONS]
-      QUIET="True"
-      IACCEPTSQLSERVERLICENSETERMS="True"
-      UpdateEnabled=False
-      USEMICROSOFTUPDATE=False
-      ACTION="Install"
-      FEATURES=SQLENGINE
-      INSTANCENAME="MSSQLSERVER"
-      SECURITYMODE="SQL"
-      SAPWD="{{ sa_password }}"
-      TCPENABLED="1"
-      SQLSVCACCOUNT="NT AUTHORITY\SYSTEM"
-      SQLSYSADMINACCOUNTS="BUILTIN\\ADMINISTRATORS"
-      INSTALLSQLDATADIR="E:\SQLData"
-      SQLUSERDBDIR="E:\SQLData\Data"
-      SQLUSERDBLOGDIR="E:\SQLData\Log"
-      SQLTEMPDBDIR="E:\SQLData\TempDB"
-      SQLTEMPDBLOGDIR="E:\SQLData\TempDB\Log"
-      SQLBACKUPDIR="E:\SQLData\Backup"
 
 - name: install sql server
   win_command: >
