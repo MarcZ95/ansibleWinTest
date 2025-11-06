@@ -12,12 +12,6 @@
       debug:
         var: os_info.stdout_lines
 
-    - name: Installierte Windows-Features auflisten
-      win_feature:
-        name: *
-        state: present
-      register: features_info
-
     - name: Anzahl installierter Features ausgeben
       debug:
         msg: "Installierte Features: {{ features_info | length }}"
