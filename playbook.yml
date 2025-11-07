@@ -5,9 +5,9 @@
     - vars/main.yml
 
   roles: 
-    - failoverclustering
-    - sqlserver2022
+  #  - failoverclustering
+  #  - sqlserver2022
     - users
-    - iis
-    - ssms
-    - sqlpsmodule
+  #  - iis
+  #  - ssms
+  #  - sqlpsmodule
