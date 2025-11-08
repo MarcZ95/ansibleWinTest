@@ -12,6 +12,8 @@
 - name: create cluster on first node
   win_shell: |
     New-Cluster -Name {{ cluster_name }} -Node {{ cluster_nodes | join(',') }} -StaticAddress {{ cluster_ip }} -NoStorage
+  become: yes
+  become_method: runas
   args:
     executable: powershell.exe
   when: inventory_hostname == cluster_nodes[0]
