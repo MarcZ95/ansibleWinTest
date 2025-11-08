@@ -11,9 +11,9 @@
 
 - name: create cluster on first node
   win_shell: |
-    $ClusterName = "MyCluster"
-    $ClusterIP   = "192.168.56.20"
-    $Nodes       = @(chefe.lab.local, client.lab.local)
+    $ClusterName = "{{ cluster_name }}"
+    $ClusterIP   = "{{ cluster_ip }}"
+    $Nodes       = @("chefe.lab.local", "client.lab.local")
     Write-Host "Creating cluster $ClusterName with nodes $Nodes and IP $ClusterIP..."
     New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Verbose
   args:
