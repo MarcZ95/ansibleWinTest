@@ -10,14 +10,14 @@
   register: clustering
 
 - name: create cluster on first node
-  community.windows.win_cluster:
+  win_cluster:
     name: "{{ cluster_name}}"
     static_address: "{{ cluster_ip }}"
     nodes: "{{ cluster_nodes }}"
   when: inventory_hostname == cluster_nodes[0]
 
 - name: add second node to cluster
-  community.windows.win_cluster_node:
+  win_cluster_node:
     name: "{{ cluster_node[1] }}"
     cluster_name: "{{ cluster_name }}"
   when: inventory_hostname == cluster_nodes[0]
