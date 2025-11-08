@@ -10,7 +10,7 @@
   register: clustering
 
 - name: create cluster on first node
-  win_cluster:
+  ansible.windows.win_cluster:
     name: "{{ cluster_name}}"
     static_address: "{{ cluster_ip }}"
     nodes: "{{ cluster_nodes }}"
