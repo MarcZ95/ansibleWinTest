@@ -8,3 +8,16 @@
     state: present
     include_management_tools: yes
   register: clustering
+
+- name: create cluster on first node
+  win_cluster:
+    name: "{{ cluster_name}}"
+    static_address: "{{ cluster_ip }}"
+    nodes: "{{ cluster_nodes }}"
+  when: inventory_hostname == cluster_nodes[0]
+
+- name: add second node to cluster
+  win_cluster_node:
+    name: "{{ cluster_node[1] }}"
+    cluster_name: "{{ cluster_name }}"
+  when: inventory_hostname == cluster_nodes[0]
