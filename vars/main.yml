@@ -10,5 +10,5 @@ sa_password: "Admin40499!"
 cluster_name: "MyCluster"
 cluster_ip: "192.168.56.20"
 cluster_nodes:
-  - CHEFE.lab.local
-  - CLIENT.lab.local
+  - chefe.lab.local
+  - client.lab.local
