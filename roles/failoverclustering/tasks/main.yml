@@ -11,14 +11,13 @@
 
 - name: create cluster on first node
   win_shell: |
-    script: |
         $ClusterName = "{{ cluster_name }}"
         $ClusterIP   = "{{ cluster_ip }}"
         $Nodes       = "{{ cluster_nodes | join(',') }}"
 
         Write-Host "Creating cluster $ClusterName with nodes $Nodes and IP $ClusterIP..."
         New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Force
-    creates: "C:\\Windows\\Cluster\\CLUSTER.INI"
+  creates: "C:\\Windows\\Cluster\\CLUSTER.INI"
   args:
     executable: powershell.exe
   when: inventory_hostname == cluster_nodes[0]
