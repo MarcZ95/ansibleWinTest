@@ -16,7 +16,7 @@
         $Nodes       = "{{ cluster_nodes | join(',') }}"
 
         Write-Host "Creating cluster $ClusterName with nodes $Nodes and IP $ClusterIP..."
-        New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Force
+        New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Verbose
   args:
     executable: powershell.exe
   when: inventory_hostname == cluster_nodes[0]
