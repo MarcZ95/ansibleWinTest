@@ -21,3 +21,15 @@
     name: "{{ cluster_node[1] }}"
     cluster_name: "{{ cluster_name }}"
   when: inventory_hostname == cluster_nodes[0]
+
+- name: create cluster on first node
+  ansible.windows.win_powershell:
+    script: |
+        $ClusterName = "{{ cluster_name }}"
+        $ClusterIP   = "{{ cluster_ip }}"
+        $Nodes       = "{{ cluster_nodes | join(',') }}"
+
+        Write-Host "Creating cluster $ClusterName with nodes $Nodes and IP $ClusterIP..."
+        New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Force
+    creates: "C:\\Windows\\Cluster\\CLUSTER.INI"
+  when: inventory_hostname == cluster_nodes[0]
