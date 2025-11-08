@@ -11,13 +11,7 @@
 
 - name: create cluster on first node
   win_shell: |
-    @'
-    $ClusterName = "{{ cluster_name }}"
-    $ClusterIP   = "{{ cluster_ip }}"
-    $Nodes       = @("chefe.lab.local", "client.lab.local")
-    Write-Host "Creating cluster $ClusterName with nodes $Nodes and IP $ClusterIP..."
-    New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Verbose
-    '@ | Out-String | Invoke-Expression
+    New-Cluster -Name {{ cluster_name }} -Node "chefe.lab.local","client.lab.local" -StaticAddress {{ cluster_ip }} -NoStorage
   args:
     executable: powershell.exe
   when: inventory_hostname == cluster_nodes[0]
