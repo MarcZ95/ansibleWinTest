@@ -10,7 +10,7 @@
   register: clustering
 
 - name: create cluster on first node
-  ansible.windows.win_powershell:
+  win_shell: |
     script: |
         $ClusterName = "{{ cluster_name }}"
         $ClusterIP   = "{{ cluster_ip }}"
@@ -19,4 +19,6 @@
         Write-Host "Creating cluster $ClusterName with nodes $Nodes and IP $ClusterIP..."
         New-Cluster -Name $ClusterName -Node $Nodes -StaticAddress $ClusterIP -NoStorage -Force
     creates: "C:\\Windows\\Cluster\\CLUSTER.INI"
+  args:
+    executable: powershell.exe
   when: inventory_hostname == cluster_nodes[0]
